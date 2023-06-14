@@ -1,0 +1,9 @@
+com\beyazpoliss\common\database\MongoStorage.class
+com\beyazpoliss\common\ConfigOptions.class
+com\beyazpoliss\common\game\DefaultRoomScheduler.class
+com\beyazpoliss\common\game\DefaultGameManager.class
+com\beyazpoliss\common\game\DefaultSpectators.class
+com\beyazpoliss\common\game\DefaultTeam.class
+com\beyazpoliss\common\game\DefaultGameRoom.class
+com\beyazpoliss\common\manager\DefaultProfileManager.class
+com\beyazpoliss\common\DefaultDodgeBall.class

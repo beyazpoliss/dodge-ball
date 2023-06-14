@@ -1,0 +1,7 @@
+main: com.beyazpoliss.bukkit.DodgeBallPluginBukkit
+name: DodgeBall
+api-version: 1.19
+author: BeyazPolis
+version: 1.0
+commands:
+  dodge-ball: {}

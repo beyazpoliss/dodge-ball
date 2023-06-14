@@ -1,0 +1,8 @@
+com\beyazpoliss\bukkit\BukkitAdapter.class
+com\beyazpoliss\bukkit\DodgeBallPluginBukkit.class
+com\beyazpoliss\bukkit\commands\GamesCommand.class
+com\beyazpoliss\bukkit\config\BukkitConfiguration.class
+com\beyazpoliss\bukkit\PlayerCacheProcessor.class
+com\beyazpoliss\bukkit\PlayerCacheProcessor$1.class
+com\beyazpoliss\bukkit\messenger\BukkitMessenger.class
+com\beyazpoliss\bukkit\DodgeBallPluginBukkit$1.class
