@@ -20,17 +20,14 @@ public class DefaultGameRoom implements GameRoom {
 
   private final String roomId;
 
-  private final GameStatus status;
+  public DefaultGameRoom(int maxRoomSize){
+    this.roomId = this.generateId();
 
-  public DefaultGameRoom(){
-    this.status = GameStatus.WAITING;
-    this.roomId = generateId();
-
-    this.red = Provider.instance().gameManager().createTeam(TeamType.RED);
-    this.blue = Provider.instance().gameManager().createTeam(TeamType.BLUE);
+    this.red = Provider.instance().gameManager().create_team(TeamType.RED,this.location("red"),maxRoomSize);
+    this.blue = Provider.instance().gameManager().create_team(TeamType.BLUE,this.location("blue"),maxRoomSize);
 
     this.spectators = new DefaultSpectators();
-    this.scheduler = new DefaultRoomScheduler();
+    this.scheduler = new DefaultRoomScheduler(this);
   }
 
   @Override
@@ -38,13 +35,34 @@ public class DefaultGameRoom implements GameRoom {
     if (red.teamSize() > blue.teamSize()){
       return TeamType.BLUE;
     } else {
-      return TeamType.RED;
+      if (blue.isSuitable()){
+        return blue.type();
+      } else {
+        return red.type();
+      }
     }
   }
 
   @Override
+  public boolean room_is_suitable_for_join() {
+    if (!(scheduler.status().equals(GameStatus.WAITING))) return false;
+    if (red.teamSize() == maxTeamSize()) return false;
+    return blue.teamSize() != maxTeamSize();
+  }
+
+  @Override
   public GameStatus getStatus() {
-    return status;
+    return scheduler.status();
+  }
+
+  @Override
+  public boolean players_is_enemy(@NotNull UUID playerOne, @NotNull UUID playerTwo) {
+    if ((red().players().contains(playerOne) && blue().players().contains(playerTwo)) ||
+      (blue().players().contains(playerOne) && red().players().contains(playerTwo))) {
+      return true;
+    }
+
+    return false;
   }
 
   @Override
@@ -92,7 +110,11 @@ public class DefaultGameRoom implements GameRoom {
 
   @Override
   public boolean canJoin(@NotNull UUID uuid, @NotNull TeamType teamType) {
-    return true;
+    final var team = this.team(teamType);
+    if (team.isSuitable()){
+      return true;
+    }
+    return false;
   }
 
   @Override
@@ -124,4 +146,15 @@ public class DefaultGameRoom implements GameRoom {
   public byte minTeamSize() {
     return 0;
   }
+
+  private DefaultLocation location(@NotNull final String team){
+    final var worldName = (String) Provider.instance().configuration().get("server.game-world.name");
+
+    final var teamX = (int) Provider.instance().configuration().get("server.game-world." + team + "-team.x");
+    final var teamY = (int) Provider.instance().configuration().get("server.game-world." + team + "-team.y");
+    final var teamZ = (int) Provider.instance().configuration().get("server.game-world." + team + "-team.z");
+
+    return new DefaultLocation(worldName,teamX,teamY,teamZ);
+  }
+
 }

@@ -1,23 +1,32 @@
 package com.beyazpoliss.common.game;
 
+import com.beyazpoliss.api.game.DefaultLocation;
 import com.beyazpoliss.api.game.Team;
 import com.beyazpoliss.api.game.TeamType;
 import lombok.AllArgsConstructor;
 import org.jetbrains.annotations.NotNull;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.UUID;
+import java.util.*;
 
 @AllArgsConstructor
 public class DefaultTeam implements Team {
 
-  private List<UUID> players;
+  private Map<UUID,String> players;
   private final TeamType type;
+  private final int maxSize;
 
-  public DefaultTeam(@NotNull final TeamType type){
+  private final DefaultLocation location;
+
+  public DefaultTeam(@NotNull final TeamType type,@NotNull final DefaultLocation location, final int maxSize){
     this.type = type;
-    this.players = new ArrayList<>();
+    this.players = new HashMap<>();
+    this.maxSize = maxSize;
+    this.location = location;
+  }
+
+  @Override
+  public DefaultLocation spawn() {
+    return location;
   }
 
   @Override
@@ -27,11 +36,34 @@ public class DefaultTeam implements Team {
 
   @Override
   public List<UUID> players() {
-    return players;
+    return new ArrayList<>(players.keySet());
+  }
+
+  @Override
+  public void removePlayer(@NotNull UUID player) {
+    players.remove(player);
   }
 
   @Override
   public int teamSize() {
     return players.size();
   }
+
+  @Override
+  public int maxSize() {
+    return maxSize;
+  }
+
+
+  @Override
+  public boolean isSuitable() {
+    return maxSize != players.size();
+  }
+
+  @Override
+  public boolean joinTeam(@NotNull UUID player, @NotNull String playerName) {
+    this.players.put(player,playerName);
+    return true;
+  }
+
 }

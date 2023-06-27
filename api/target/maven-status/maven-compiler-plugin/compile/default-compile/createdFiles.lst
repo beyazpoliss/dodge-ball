@@ -5,8 +5,10 @@ com\beyazpoliss\api\messenger\MessageSender.class
 com\beyazpoliss\api\Structure$Impl.class
 com\beyazpoliss\api\Provider.class
 com\beyazpoliss\api\StructureObject.class
+com\beyazpoliss\api\game\DefaultLocation.class
 com\beyazpoliss\api\game\Team.class
 com\beyazpoliss\api\game\GameRoom.class
+com\beyazpoliss\api\game\TimerWrapper.class
 com\beyazpoliss\api\game\GameStatus.class
 com\beyazpoliss\api\config\ConfigOptions.class
 com\beyazpoliss\api\profile\ProfileManager.class
@@ -14,6 +16,7 @@ com\beyazpoliss\api\Structure.class
 com\beyazpoliss\api\game\Spectators.class
 com\beyazpoliss\api\profile\ProfileImpl.class
 com\beyazpoliss\api\DodgeBall.class
+com\beyazpoliss\api\game\PlayerManager.class
 com\beyazpoliss\api\game\TeamType.class
 com\beyazpoliss\api\game\GameManager.class
 com\beyazpoliss\api\database\Storage.class

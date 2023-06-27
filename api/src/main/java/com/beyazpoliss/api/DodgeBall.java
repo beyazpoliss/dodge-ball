@@ -2,6 +2,8 @@ package com.beyazpoliss.api;
 
 import com.beyazpoliss.api.config.Configuration;
 import com.beyazpoliss.api.game.GameManager;
+import com.beyazpoliss.api.game.PlayerManager;
+import com.beyazpoliss.api.game.TimerWrapper;
 import com.beyazpoliss.api.messenger.MessageSender;
 import com.beyazpoliss.api.profile.ProfileManager;
 import org.jetbrains.annotations.NotNull;
@@ -52,6 +54,15 @@ public interface DodgeBall {
     return this.structure().provideOrThrow(GameManager.class);
   }
   /**
+   * It does operations players.
+   *
+   * @see PlayerManager
+   */
+  @NotNull
+  default PlayerManager playerManager(){
+    return this.structure().provideOrThrow(PlayerManager.class);
+  }
+  /**
    * It does operations profiles.
    *
    * @see ProfileManager
@@ -59,5 +70,14 @@ public interface DodgeBall {
   @NotNull
   default ProfileManager profileManager(){
     return this.structure().provideOrThrow(ProfileManager.class);
+  }
+  /**
+   * It does operations profiles.
+   *
+   * @see ProfileManager
+   */
+  @NotNull
+  default TimerWrapper timer(){
+    return this.structure().provideOrThrow(TimerWrapper.class);
   }
 }

@@ -1,11 +1,14 @@
 C:\Projeler\dodge-ball\api\src\main\java\com\beyazpoliss\api\Structure.java
 C:\Projeler\dodge-ball\api\src\main\java\com\beyazpoliss\api\game\GameStatus.java
+C:\Projeler\dodge-ball\api\src\main\java\com\beyazpoliss\api\game\TimerWrapper.java
 C:\Projeler\dodge-ball\api\src\main\java\com\beyazpoliss\api\StructureObject.java
 C:\Projeler\dodge-ball\api\src\main\java\com\beyazpoliss\api\DodgeBall.java
 C:\Projeler\dodge-ball\api\src\main\java\com\beyazpoliss\api\config\Configuration.java
+C:\Projeler\dodge-ball\api\src\main\java\com\beyazpoliss\api\game\PlayerManager.java
 C:\Projeler\dodge-ball\api\src\main\java\com\beyazpoliss\api\profile\ProfileManager.java
 C:\Projeler\dodge-ball\api\src\main\java\com\beyazpoliss\api\profile\ProfileImpl.java
 C:\Projeler\dodge-ball\api\src\main\java\com\beyazpoliss\api\game\Team.java
+C:\Projeler\dodge-ball\api\src\main\java\com\beyazpoliss\api\game\DefaultLocation.java
 C:\Projeler\dodge-ball\api\src\main\java\com\beyazpoliss\api\database\Storage.java
 C:\Projeler\dodge-ball\api\src\main\java\com\beyazpoliss\api\game\GameManager.java
 C:\Projeler\dodge-ball\api\src\main\java\com\beyazpoliss\api\messenger\MessageSender.java

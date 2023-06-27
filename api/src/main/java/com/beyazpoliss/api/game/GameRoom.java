@@ -12,7 +12,11 @@ public interface GameRoom {
 
   TeamType getSuitableTeam();
 
+  boolean room_is_suitable_for_join();
+
   GameStatus getStatus();
+
+  boolean players_is_enemy(@NotNull final UUID playerOne,@NotNull final UUID playerTwo);
 
   String roomId();
   /**
